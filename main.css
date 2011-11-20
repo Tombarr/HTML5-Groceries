@@ -1,0 +1,582 @@
+/*
+ * main.css
+ * Grocery List
+ *
+ * Copyright (C) 2011 Thomas James Barrasso
+ */
+
+/*	Using Less Framework 4
+	http://lessframework.com
+	by Joni Korpi
+	License: http://creativecommons.org/licenses/MIT/
+	
+	-------------------------------------------------
+	
+	Modified by Thomas Barrasso
+
+	---------------------------
+
+	Resets
+	------	*/
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, 
+img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figure, figcaption, hgroup, 
+menu, footer, header, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+article, aside, canvas, figure, figure img, figcaption, hgroup,
+footer, header, nav, section, audio, video {
+	display: block;
+}
+
+a img {border: 0;}
+
+
+
+/*	Typography presets
+	------------------	*/
+
+.gigantic {
+	font-size: 110px;
+	line-height: 120px;
+	letter-spacing: -2px;
+}
+
+.huge, h1 {
+	font-size: 68px;
+	line-height: 72px;
+	letter-spacing: -1px;
+}
+
+.large, h2 {
+	font-size: 42px;
+	line-height: 48px;
+}
+
+.bigger, h3 {
+	font-size: 26px;
+	line-height: 36px;
+}
+
+.big, h4 {
+	font-size: 22px;
+	line-height: 30px;
+}
+
+body {
+	font: 16px/24px Georgia, serif;
+}
+
+.small, small {
+	font-size: 13px;
+	line-height: 18px;
+}
+
+/* Selection colours (easy to forget) */
+
+::selection 	 	{background: rgb(255,255,158);}
+::-moz-selection 	{background: rgb(255,255,158);}
+img::selection 		{background: transparent;}
+img::-moz-selection	{background: transparent;}
+body {-webkit-tap-highlight-color: rgb(255,255,158);}
+
+
+
+/*		Default Layout: 992px. 
+		Gutters: 24px.
+		Outer margins: 48px.
+		Leftover space for scrollbars @1024px: 32px.
+-------------------------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8      9      10
+px      68    160    252    344    436    528    620    712    804    896    */
+
+/* There will be no horizontal scrolling,
+   Fixes a bug with spasmotic resizing. */
+
+body, html {
+	overflow-x:hidden;
+}
+
+/* Into fade-in. */
+
+@-webkit-keyframes fade-in {
+    0%   { opacity: 0;    }
+    12%  { opacity: 0.12; }
+    25%  { opacity: 0.25; }
+    37%  { opacity: 0.37; }
+    50%  { opacity: 0.5;  }
+    62%  { opacity: 0.62; }
+    75%  { opacity: 0.74; }
+    88%  { opacity: 0.88; }
+    100% { opacity: 1;    }
+}
+
+/* General styles */
+
+body {
+    -webkit-animation-name: fade-in;
+    -webkit-animation-duration: 1s;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+	width: 896px;
+	margin:0 auto;
+	background: #EEEEEE;
+	color: rgb(60, 60, 60);
+	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+}
+
+/* These elements adapt their size based on the screen dimensions. */
+
+#item-name-input {
+	width: 856px;
+}
+
+#list > ul > li > .remove,
+#clear-list {
+	width:72px;
+	height:72px;
+}
+
+#clear-list {
+	margin-top:-18px;
+}
+
+#list > ul > li,
+#list > ul > li > span {
+	height:72px;
+	line-height:72px;
+}
+
+#list > ul > li > .item-name {
+	max-width:82%;
+}
+
+#list > footer {
+	font-size:1.7em;
+}
+
+#item-count-section {
+	left:30%;
+	width:30%;
+}
+
+
+
+/*		Tablet Layout: 768px.
+		Gutters: 24px.
+		Outer margins: 28px.
+		Inherits styles from: Default Layout.
+-----------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8
+px      68    160    252    344    436    528    620    712    */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	
+	body {
+		width: 768px;
+	}
+	
+	#item-name-input {
+		width: 728px;
+	}
+	
+	#list > ul > li > .remove,
+	#clear-list {
+		width:62px;
+		height:62px;
+	}
+	
+	#clear-list {
+		margin-top:-16px;
+	}
+	
+	#list > ul > li,
+	#list > ul > li > span {
+		height:62px;
+		line-height:62px;
+	}
+	
+	#list > ul > li > .item-name {
+		max-width:80%;
+	}
+	
+	body > footer {
+		font-size:.9em;
+	}
+	
+	#list > footer {
+		font-size:1.5em;
+	}
+	
+	#item-count-section {
+		left:25%;
+	}
+}
+
+
+
+/*		Mobile Layout: 320px.
+		Gutters: 24px.
+		Outer margins: 34px.
+		Inherits styles from: Default Layout.
+---------------------------------------------
+cols    1     2      3
+px      68    160    252    */
+
+@media only screen and (max-width: 767px) {
+	
+	body {
+		width: 292px;
+	}
+	
+	#item-name-input {
+		width: 252px;
+	}
+	
+	#list > ul > li > .remove,
+	#clear-list {
+		width:42px;
+		height:42px;
+	}
+	
+	#clear-list {
+		margin-top:-10px;
+	}
+	
+	#list > ul > li,
+	#list > ul > li > span {
+		height:42px;
+		line-height:42px;
+	}
+	
+	#list > ul > li > .item-name {
+		max-width:55%;
+	}
+	
+	body > footer {
+		font-size:.7em;
+	}
+	
+	#list > footer {
+		font-size:1em;
+	}
+	
+	#item-count-section {
+		left:10%;
+	}
+	
+}
+
+
+
+/*		Wide Mobile Layout: 480px.
+		Gutters: 24px.
+		Outer margins: 22px.
+		Inherits styles from: Default Layout, Mobile Layout.
+------------------------------------------------------------
+cols    1     2      3      4      5
+px      68    160    252    344    436    */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	
+	body {
+		width: 476px;
+	}
+	
+	#item-name-input {
+		width: 436px;
+	}
+	
+	#list > ul > li > .remove,
+	#clear-list {
+		width:52px;
+		height:52px;
+	}
+	
+	#clear-list {
+		margin-top:-13px;
+	}
+	
+	#list > ul > li,
+	#list > ul > li > span {
+		height:52px;
+		line-height:52px;
+	}
+	
+	#list > ul > li > .item-name {
+		max-width:70%;
+	}
+	
+	body > footer {
+		font-size:.8em;
+	}
+	
+	#list > footer {
+		font-size:1.3em;
+	}
+	
+	#item-count-section {
+		left:20%;
+	}
+	
+}
+
+
+/*	Retina media query.
+	Overrides styles for devices with a 
+	device-pixel-ratio of 2+, such as iPhone 4.
+-----------------------------------------------    */
+
+@media 
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (min-device-pixel-ratio: 2) {
+	
+	body {
+	
+	}
+	
+}
+
+/*    Top Input Form
+--------------------    */
+
+/* CSS3 background gradients. */
+
+#item-entry {
+	position:fixed;
+	padding:.4em .2em .4em .1em;
+	background: #FF0000; /* CSS3-less Browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E99480', endColorstr='#DC143C'); /* MSIE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#E99480), to(#DC143C)); /* Webkit */
+	background: -moz-linear-gradient(top,  #E99480,  #DC143C); /* Mozilla Firefox 3.6+ */ 
+}
+
+/* CSS3 Border radius. */
+
+#item-name-input {
+	font-size:1.8em;
+	margin-left:3px;
+	background:#FFF;
+	border:none;
+}
+
+/* Modernizr touch detection, fixes iOS border-radius input bug. */
+
+.no-touch #item-name-input {
+	-webkit-border-radius: 1em;
+	border-radius: 1em;
+	-moz-border-radius: 1em;
+	-ms-border-radius: 1em;
+	-o-border-radius: 1em;
+	-khtml-border-radius: 1em;
+}
+
+/* CSS3 Box Shadow. */
+
+#item-name-input,
+#item-count-input {
+	-webkit-focus-ring-color: none;
+	-webkit-appearance: none;
+	outline: 0;
+	padding:.2em .5em .2em .6em;
+	border: 1px solid #999;
+	-moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+	-o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+	box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+}
+
+label[for="item-count-input"] {
+	font-size:1.5em;
+}
+
+#item-count-input {
+	font-size:1.5em;
+	width:3em;
+	padding-left:1em;
+	margin:0 1em;
+}
+
+/*      Main Grocery List
+-------------------------      */
+
+/* CSS3 Box Shadow & Border Radius. */
+
+#list {
+	padding:5em 0 2em 0;
+	margin-bottom:2em;
+	background-color:#FEFEFE;
+	-moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
+	-o-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
+	-moz-border-radius-bottomleft: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-o-border-bottom-left-radius: 5px;
+	-ms-border-bottom-left-radius: 5px;
+	-khtml-border-bottom-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-o-border-bottom-right-radius: 5px;
+	-ms-border-bottom-right-radius: 5px;
+	-khtml-border-bottom-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+#list,
+#list > ul,
+#list > ul > li {
+	width:100%;
+}
+
+#list > ul {
+	list-style:none;
+}
+
+#list > ul,
+#list > footer {
+	font-family:Baskerville, Georgia, serif;
+	font-size:1.8em;
+	width:90%;
+	margin:0 5%;
+}
+
+#list > ul > li {
+	overflow:hidden;
+	border-bottom:1px solid #111111;
+}
+
+#list > ul > li > span {
+	float: left;
+}
+
+/* CSS3 background size for adapting background image. */
+
+#list > ul > li > .remove {
+	border-left:1px solid #111111;
+	display:block;
+	float: right;
+	background-repeat:no-repeat;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAAolBMVEX///8AAAAAAAAAAAAAAAADAwMAAAAAAAADAwM1NTUAAAD///////8AAAAAAAAAAAAAAAACAgIAAAABAQEDAwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBwcICAhsbGwGBgYHBwdra2sAAAD///////8AAAAAAAAFBQUAAAAAAAAEBAQaGhqIiIgGBgYAAAD///+6urocHBwHBwe7u7v///////9AuXVlAAAANnRSTlMAACV1lIhNlZB3li9ZT5gmeJaZlo2am5ydnp+gmJhmmZlmoRlRoqOfpC6gi06fpQ9bjJ1bCTwt2eAMAAABB0lEQVRYw+1VMQ7CMAy8S1JYEBIbP4Cd/z+BLzCzISEWENQMpFUFSeMAgsW3WHXcy+Uau4DBYDAY0uB4iuyeRGSQl5e33Pg+vmelH68sEMmYiNLRJiwaIheNIld2NlESEiLLTKIicnyHiKqUgklhiA4hnZ5RTgAwJ+Q4iP2ClijEG920D81dRKBUXUhGF1qgHUYwZ2FGkc9E+Ddb5GOzmYn5u2GKyorM7I8VOXls5bumrTW7Fxx/bAwl7RmiaYxNHANd7Bdqu3/3FP/f/fqFrynKjVrn1qn82rlQdbRwg6wSeUHlzGaTM+NcOfxJXlPlMruqvwIBYMPDPlG+XMg2HtFgMBgMv8Yd8bcuJdf5sKIAAAAASUVORK5CYII=);
+	-webkit-background-size:100% 100%;
+	-o-background-size:100% 100%;
+	-khtml-background-size:100% 100%;
+	-moz-background-size:100% 100%;
+	background-size:100% 100%;
+	cursor:pointer;
+}
+
+#list > ul > li > .count {
+	width:2em;
+}
+
+/* CSS3 Ellipsis for text overflow. */
+
+#list > ul > li > .item-name {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+}
+
+/*     Footer
+-------------    */
+
+/* CSS3 RGBA. */
+
+body > footer,
+#list > footer {
+	text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
+	text-align:center;
+	font-family:Baskerville, Georgia, serif;
+}
+
+/* CSS3 Background Size. */
+
+#clear-list {
+	display:block;
+	float:right;
+	background-repeat:no-repeat;
+	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAACMVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAwMCAgIVFRVDQ0OSkpKXl5f29vaRkZECAgIAAAAAAAACAgIAAAAEBAQyMjLPz8////////////////////8zMzMAAAAAAAAcHBy5ubn///////+6uroAAAADAwMAAABDQ0P///////8AAAAEBARmZmZlZWUDAwNAQED///9BQUEAAAAEBAQAAAAdHR3///8EBAQCAgKvr68AAAAAAAAGBgYAAAD///8EBAQAAAACAgKurq4ICAgPDw8AAAAZGRlvb28HBwcMDAw5OTn///////////8HBwcAAABSUlIEBARycnIAAACCgoI0NDQFBQUAAAAREREJCQkAAAAPDw8WFhYUFBQvLy8AAAALCwtbW1sCAgIAAAAKCgoAAAAFBQUAAAAAAAA3NzcCAgIAAAAEBATBwcEICAgAAAAFBQUGBgb///9JSUkAAAAAAABCQkLr6+sNDQ3t7e2hoaEFBQUAAAAGBgb///92dnYDAwMAAAAAAAACAgJ3d3f///9SUlICAgIAAAAAAABSUlL///9/f38AAAAAAAAAAABeXl7///+oqKgLCwsAAAALCwuenp7s7Ow/Pz8EBAQ+Pj7s7Oz////////Ozs4+Pj4ICAgAAAAHBwf///////+MjIw8PDwdHR0PDw8KCgo7Ozv///////////9ochgbAAAAu3RSTlMAAB5HYnZ/lAlGgQOLJXUTeZV7GYmLhnVmZVpmkTE3k5aUe15DKhMSAXs6J4NeMQdeFY2Xdj4KAnxvbz13HncHjJiEK0iWRyZ4iZkJlx+YOZJSmodklHllGVFZj5tBmB+cCwaanQ+VniiHTWyfe0OcDZagWCR6c50RhTCZoXGZBHBOTHQmlSlWnaKdDWigbWuhaBd0oqNYdSNqTSMhchZemKSZY0x8oHxNDwJbfZylnAZPaX6Llpt+O0dMjlbNBAAAAldJREFUWMPtlj9oFEEUxn9vd2Y3p/ljI9jEQjRKClFBG8HCwsr+KlEQwco0ShJF/IciiEIqQRG0DPY2ghYpLESFFBLNoYKFhZEDjZLzsnkWl5yes7vOHooi+1XL93a//ea9NzMPSpQoUeLfgOQzIiIiqKqqAqBdCMUiyQ+BULWRLWQyva5aCpsdRIKV4AvQJ+gnb6F+EezPpJWeDxAnhI5QmLG03ri1BmuMtdZEEiy1fA58JAZd8HQ0KNJO9UqyowUF3g0/HwDqfskenhegV0Sm2/xWDRbnAe39DLzxEtq24udxR2RnqwVUgCc+QrukCURzNSe2cW1j+ckRCtJaoglUjKtDLVxdoLP3iIDIg9T39y43+EOPqtkEjNx3+H3SgCX8O9tG8HqDy79fV8nJiMvsFzBD91yh9bn/T2EsSC3NvE2+718PIbsIZjpNSNp7T72EorRaApO555GbozCju34B11EQZDjKR+DZpl04CuXvCv3JZIe/09FIYSH38K9vMWEQPMr84vju/lfq42jWAmY0S2fsbjI86neMGJtXN3sgvRYpnLWAnk3XOafgXpzpQudNBWgOpt53X4FK6DlEbD4oAjTOuH5iQJI7M3577YUxBoiv9nfyo9diII7NjPdYMyEiwLMdLyfa/MjQ0+2Ahs1jBeaj61LvA+D0ZZEj3FQduwDAwprm0UKD1q2WJycoN6aKnEdweM4YdzyKomiq8Og3eepSpytJ9OTFqlLMEVRrdtwYG8U90BNHFROM21q126l20+AJkdscUr3ydjb3FilRokSJ/w7fAGmti0IzGGn3AAAAAElFTkSuQmCC);
+	-webkit-background-size:100% 100%;
+	-o-background-size:100% 100%;
+	-khtml-background-size:100% 100%;
+	-moz-background-size:100% 100%;
+	background-size:100% 100%;
+	cursor:pointer;
+}
+
+/* CSS3 Rotate. */
+
+.csstransforms #clear-list:hover,
+.csstransforms #clear-list:active {
+	-moz-transform:rotate(60deg);
+	-o-transform:rotate(60deg);
+	-webkit-transform:rotate(60deg);
+	-ms-transform:rotate(60deg);
+	transform:rotate(60deg);
+}
+
+#list > footer {
+	color:#444;
+	margin-top:1em;
+}
+
+#item-count {
+	color:#111;
+	font-weight:700;
+}
+
+body > footer {
+	color:#777;
+	margin-bottom:1.5em;
+}
+
+/* Keeps original form hidden. */
+#modal {
+	position:fixed;
+	top:0;
+	left:0;
+	display:none;
+}
+
+#overlay {
+	background:#000;
+	position:fixed;
+	width:400%; /* < 100% b/c iOS keyboard bug. */
+	height:400%;
+	top:0;
+	left:0;
+	z-index:1;
+	opacity:0.4;
+	filter:alpha(opacity=40);
+}
+
+/* CSS3 Border Radius. */
+
+#item-count-section {
+	z-index:10;
+	position:fixed;
+	padding:1em;
+	background:#EEE;
+	top:40%;
+	min-height:56px;
+	min-width:240px;
+	text-align:center;
+	height:20%;
+	border:.3em solid #FF7F00;
+	-webkit-border-radius: 1em;
+	border-radius: 1em;
+	-moz-border-radius: 1em;
+	-ms-border-radius: 1em;
+	-o-border-radius: 1em;
+	-khtml-border-radius: 1em;
+}

@@ -1,0 +1,73 @@
+<!--
+	index.html
+	Grocery List
+	
+	Copyright (C) 2011 Thomas James Barrasso
+-->
+<!doctype html>
+<html manifest="./cache.mf">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>HTML5 Grocery List</title>
+		
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		
+		<!-- MooTools from Google's CDN -->
+		<script src="http://ajax.googleapis.com/ajax/libs/mootools/1.3.1/mootools-yui-compressed.js"></script>
+		<script src="http://ajax.cdnjs.com/ajax/libs/modernizr/1.7/modernizr-1.7.min.js"></script>
+		
+		<!-- My Custom JS -->
+		<script src="./main.js"></script>
+		
+		<!-- My Stylesheet -->
+		<link rel="stylesheet" media="all" href="./main.css" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	</head>
+	
+	<body lang="en">
+	
+		<!-- Header w/ input -->
+		<header id="item-entry">
+			<form action="#" id="item-form" autocomplete="off">
+				<input type="text" name="item" id="item-name-input" placeholder="Add an item to your grocery list..." />
+			</form>
+		</header>
+		
+		<!-- Grocery List -->
+		<section id="list">
+			<ul></ul>
+			
+			<footer>
+				<p>
+					<span id="item-count">0</span> total items
+					<span id="clear-list" title="Clear your entire grocery list"></span>
+				</p>
+			</footer>
+			
+		</section>
+		
+		<!-- Modal box for item count. -->
+		<section id="modal">
+			<section id="overlay"></section>
+			<section id="item-count-section">
+				<form action="#" id="item-count-form" autocomplete="off">
+					<label for="item-count-input">How many?</label>
+					<input type="hidden" name="item-name-input" id="item-name-input2" />
+					<input type="text" name="item-count-input" id="item-count-input" maxlength="3" value="0" />
+					<input type="submit" name="Add" value="Add" />
+				</form>
+			</section>
+		</section>
+		
+		<!-- Informational footer -->
+		<footer>
+			Thomas James Barrasso - 2011 - HTML5 Grocery List
+		</footer>
+		
+	</body>
+	
+</html>
